@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Test Vue</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <!--Navigation Bar-->
+    <div class="fixed">
+        <nav>
+            <div class="nav-wrapper #01579b light-blue">
+                <a href="#" class="brand-logo center">Logo</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <!--main body-->
+    <div class="container" id="task">
+        <div class="row">
+            <div class="col s12">
+                <h3 class="center">Add Task</h3>
+                <div class="row z-depth-4">
+                    <div class="input-field col s12">
+                        <input id="task_add" type="text" v-model="newTask" v-on:keyup.enter="addTask">
+                        <label for="task_add">Add Task</label>
+                    </div>
+                    <!--<button class="btn btn-primary" v-on:click="clearList">Clear List</button>-->
+                    <!--<a class="waves-effect waves-light btn" v-on:click="clearList"><i class="material-icons left">cloud</i>Clear List</a>-->
+                </div>
+            </div>
+            <div class="col s12 m6 l2">
+                <a class="waves-effect waves-light btn" v-on:click="clearList" style="width: 100%;"><i class="material-icons left">cloud</i>Clear List</a>
+            </div>
+        </div>
+        <div class="row z-depth-4">
+            <div class="col s12" v-for="task in taskList">
+                <div class="row">
+                    <div class="col s12">
+                        <ul>
+                            <li>
+                                <input type="checkbox" />
+                                <label for="checkbox">{{ task.text }}</label>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col s12 m6 l2">
+                        <a class="waves-effect red darken-3 btn" v-on:click="removeTask" style="width: 100%;"><i class="material-icons center">delete</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<pre>{{ $data }}</pre>-->
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script src="node_modules/materialize-css/bin/materialize.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
